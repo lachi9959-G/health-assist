@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -169,9 +170,10 @@
                 <div class="hidden md:flex space-x-8 text-sm font-bold uppercase tracking-wider">
                     <a href="#home" class="text-slate-500 hover:text-medical-600 transition">Home</a>
                     <a href="#diagnosis" class="text-slate-500 hover:text-medical-600 transition">AI Diagnosis</a>
-                    <a href="#booking" class="text-slate-500 hover:text-medical-600 transition">Book Doctor</a>
-                    <a href="#pharmacy" class="text-slate-500 hover:text-medical-600 transition">Pharmacy</a>
                     <a href="#tools" class="text-slate-500 hover:text-medical-600 transition">Tools</a>
+                    <a href="https://lachi9959-g.github.io/WadNotes/">LogNotes</a>
+                    <a href="#pharmacy" class="text-slate-500 hover:text-medical-600 transition">Pharmacy</a>
+                    <a href="#booking" class="text-slate-500 hover:text-medical-600 transition">Booking</a>
                 </div>
 
                 <div class="flex items-center gap-4">
@@ -944,7 +946,7 @@
             recognition = new SpeechRec();
             recognition.continuous = false;
             recognition.onstart = () => document.getElementById('voiceBtn').classList.add('mic-active');
-            recognition.onend = () => document.getElementById('voiceBtn').classList.remove('mic-active');
+            recognition.onend = () => document.getElementById('voiceBtn').classList.remove('mic-inactive');
             recognition.onresult = (e) => {
                 document.getElementById('userInput').value = e.results[0][0].transcript;
                 sendMessage();
@@ -1129,5 +1131,43 @@
         const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => document.documentElement.classList.toggle('dark'));
     </script>
+<!-- Code injected by live-server -->
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
 </body>
 </html>
