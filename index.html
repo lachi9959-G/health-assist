@@ -1170,5 +1170,19 @@
 	}
 	// ]]>
 </script>
+	<script>
+// Disable Ctrl+U
+document.addEventListener('keydown', function(e) {
+    if (e.ctrlKey && e.key.toLowerCase() === 'u') {
+        e.preventDefault();
+        alert('View Source is disabled');
+    }
+});
+
+// Disable Right Click
+document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+});
+</script>
 </body>
 </html>
